@@ -1,6 +1,8 @@
 import express, { Request, Response } from 'express';
 import { v4 as uuidv4 } from 'uuid';
 import { Pool } from 'pg';
+import cors from 'cors';
+
 
 interface Place {
     id: string;
@@ -14,7 +16,7 @@ interface Place {
 
 const app = express();
 app.use(express.json());
-
+app.use(cors());
 const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
